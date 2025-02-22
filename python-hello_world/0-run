@@ -1,10 +1,2 @@
 #!/bin/bash
-# Check if PYFILE environment variable is set and is not empty
-if [ -z "$PYFILE" ]; then
-  echo "Error: PYFILE is not set."
-  exit 1
-fi
-
-# Run the Python script specified in $PYFILE
-python3 "$PYFILE"
-
+nano 0-run
