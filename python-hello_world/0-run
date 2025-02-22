@@ -1,2 +1,6 @@
 #!/bin/bash
-if [ -z "$PYFILE" ]
+# Check if PYFILE environment variable is set
+if [ -z "$PYFILE" ]; then
+  echo "Error: PYFILE is not set."
+  exit 1
+fi
