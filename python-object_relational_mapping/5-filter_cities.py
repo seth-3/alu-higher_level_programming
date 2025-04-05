@@ -1,41 +1,35 @@
 
 #!/usr/bin/python3
-'''
-    A script that takes in the name of a state as an
-    argument and lists all cities of that state, using
-    the database hbtn_0e_4_usa
-'''
-
+"""
+Script that lists all `cities` in the `cities` table of `hbtn_0e_4_usa`
+where the city's state matches the argument `state name`.
+Arguments:
+    mysql username (str)
+    mysql password (str)
+    database name (str)
+    state name (str)
+"""
 
 import sys
 import MySQLdb
 
-
 if __name__ == "__main__":
-    conn = MySQLdb.connect(
-        user=sys.argv[1],
-        passwd=sys.argv[2],
-        db=sys.argv[3],
-        host="localhost",
-        port=3306
-    )
+    mySQL_u = sys.argv[1]
+    mySQL_p = sys.argv[2]
+    db_name = sys.argv[3]
 
     state_name = sys.argv[4]
 
-    cursor = conn.cursor()
+    # By default, it will connect to localhost:3306
+    db = MySQLdb.connect(user=mySQL_u, passwd=mySQL_p, db=db_name)
+    cur = db.cursor()
 
-    sql_com = """SELECT cities.name
-          FROM states
-          INNER JOIN cities ON states.id = cities.state_id
-          WHERE states.name = %s
-          ORDER BY cities.id ASC"""
+    cur.execute("SELECT c.name \
+                 FROM cities c INNER JOIN states s \
+                 ON c.state_id = s.id WHERE s.name = %s\
+                 ORDER BY c.id", (state_name, ))
+    rows = cur.fetchall()
 
-    cursor.execute(sql_com, (state_name,))
-
-    data = cursor.fetchall()
-
-    print(", ".join([city[0] for city in data]))
-
-    cursor.close()
-    conn.close()
-
+    for i in range(len(rows)):
+        print(rows[i][0], end=", " if i + 1 < len(rows) else "")
+    print("")
