@@ -1,3 +1,4 @@
+#!/usr/bin/python3
 '''
     Using the SQL Alchemy in defining a database
     states Database table
