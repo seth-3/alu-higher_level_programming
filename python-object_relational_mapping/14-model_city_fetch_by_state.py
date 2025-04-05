@@ -24,4 +24,3 @@ if __name__ == "__main__":
             state[1].__dict__['name']))
 
     session.close()
-
