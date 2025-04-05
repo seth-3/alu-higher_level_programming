@@ -1,4 +1,3 @@
-
 #!/usr/bin/python3
 """A base class"""
 
@@ -135,4 +134,3 @@ class Base:
             pen.right(90)
             pen.forward(shape.height)
             pen.right(90)
-
