@@ -1,5 +1,3 @@
-
-#!/usr/bin/python3
 """A script that lists all records with letter a"""
 
 
@@ -26,4 +24,3 @@ if __name__ == "__main__":
         print(f'{state.id}: {state.name}')
 
     session.close()
-

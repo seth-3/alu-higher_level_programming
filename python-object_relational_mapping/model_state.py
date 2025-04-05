@@ -1,5 +1,3 @@
-
-#!/usr/bin/python3
 '''
     Using the SQL Alchemy in defining a database
     states Database table
@@ -16,4 +14,3 @@ class State(Base):
 
     id = Column(Integer, primary_key=True, autoincrement=True, nullable=False)
     name = Column(String(128), nullable=False)
-

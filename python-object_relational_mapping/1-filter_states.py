@@ -1,4 +1,3 @@
-#!/usr/bin/python3
 """
     Create a that lists all states with a name starting with N
 """
